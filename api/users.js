@@ -62,12 +62,11 @@ router.post("/register", async (req, res, next) => {
   const { username, password, email } = req.body;
 
   if (password.length < 8) {
-    res.status(401);
+    res.status(403);
     res.send({
       error: "Error",
       name: "Password length error",
       message: "Password Too Short!",
-      token: token,
     });
   }
 
