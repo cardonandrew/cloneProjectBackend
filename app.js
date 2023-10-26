@@ -20,7 +20,7 @@ router.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-const PORT = 1337;
+const PORT = 3000;
 const server = http.createServer(app);
 
 server.listen(PORT, () => {

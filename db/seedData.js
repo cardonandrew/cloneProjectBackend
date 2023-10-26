@@ -7,6 +7,10 @@ const {
 } = require("./users");
 const { createPost, getAllPosts, getPostById, updatePost } = require("./posts");
 
+{
+  /* To make a comments table, I will have to have the postId, user that posted it, the comment, and the date and time posted */
+}
+
 async function dropTables() {
   // drop all tables, in the correct order
   try {
@@ -36,15 +40,15 @@ async function createTables() {
         lastname varchar (255),
         email varchar (255),
         "isVerified" BOOLEAN DEFAULT false,
-        "profileImage" varchar (255)
+        "profileImage" varchar (500)
       );
         CREATE TABLE posts (
         id SERIAL PRIMARY KEY,
         username varchar(255) NOT NULL,
         tweet TEXT NOT NULL,
-        "imageUrl" varchar (255),
+        "imageUrl" varchar (500),
         "isVerified" BOOLEAN DEFAULT false,
-        "profileImage" varchar (255),
+        "profileImage" varchar (500),
         "userId" INTEGER REFERENCES users(id)
       );
        

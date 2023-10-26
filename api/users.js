@@ -59,7 +59,7 @@ router.post("/login", async (req, res, next) => {
 });
 
 router.post("/register", async (req, res, next) => {
-  const { username, password, email } = req.body;
+  const { username, password, email, isVerified, profileImage } = req.body;
 
   if (password.length < 8) {
     res.status(403);
@@ -83,7 +83,13 @@ router.post("/register", async (req, res, next) => {
       });
     }
 
-    const fields = { username: username, password: password, email: email };
+    const fields = {
+      username: username,
+      password: password,
+      email: email,
+      isVerified: isVerified,
+      profileImage: profileImage,
+    };
     const user = await createUser(fields);
     const token = jwt.sign(
       {

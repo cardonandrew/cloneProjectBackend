@@ -12,9 +12,6 @@ const {
 
 router.get("/", async (req, res, next) => {
   const allPosts = await getAllPosts();
-  if (allPosts) {
-    console.log("allPosts", allPosts);
-  }
   res.send(allPosts);
   next();
 });
