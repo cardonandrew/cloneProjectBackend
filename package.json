@@ -5,9 +5,10 @@
   "main": "app.js",
   "scripts": {
     "start:dev": "nodemon app.js",
-    "start": "node app.js",
+    "start": "node ./db/seed.js && app.js",
     "seed:dev": "nodemon ./db/seed.js",
-    "seed": "node ./db/seed.js"
+    "seed": "node ./db/seed.js",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
