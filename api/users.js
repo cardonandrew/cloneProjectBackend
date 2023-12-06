@@ -91,6 +91,7 @@ router.post("/register", async (req, res, next) => {
       profileImage: profileImage,
     };
     const user = await createUser(fields);
+    console.log("user after fields", user);
     const token = jwt.sign(
       {
         id: user.id,
@@ -101,8 +102,11 @@ router.post("/register", async (req, res, next) => {
         expiresIn: "2w",
       }
     );
-    console.log(token);
-    const response = { user: user, message: "you're signed up!", token: token };
+    const response = {
+      user: user,
+      message: "you're signed up!",
+      token: token,
+    };
 
     res.send(response);
   } catch (error) {
