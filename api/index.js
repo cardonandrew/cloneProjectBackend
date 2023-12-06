@@ -46,8 +46,12 @@ router.use(async (req, res, next) => {
 const usersRouter = require("./users");
 router.use("/users", usersRouter);
 
-// ROUTER: /api/products
+// ROUTER: /api/posts
 const postsRouter = require("./posts");
 router.use("/posts", postsRouter);
+
+// ROUTER: /api/comments
+const commentsRouter = require("./comment");
+router.use("/comments", commentsRouter);
 
 module.exports = router;

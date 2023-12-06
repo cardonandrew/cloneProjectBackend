@@ -16,6 +16,7 @@ async function dropTables() {
   try {
     await client.query(`
       DROP TABLE IF EXISTS posts CASCADE;
+      DROP TABLE IF EXISTS comments CASCADE;
       DROP TABLE IF EXISTS users;
   `);
 
@@ -49,6 +50,14 @@ async function createTables() {
         "imageUrl" varchar (500),
         "isVerified" BOOLEAN DEFAULT false,
         "profileImage" varchar (500),
+        "userId" INTEGER REFERENCES users(id)
+      );
+        CREATE TABLE comments (
+        id SERIAL PRIMARY KEY,
+        username varchar(255) NOT NULL,
+        "isVerified" BOOLEAN DEFAULT false,
+        comment varchar(255) NOT NULL,
+        "postId" INTEGER NOT NULL,
         "userId" INTEGER REFERENCES users(id)
       );
        
