@@ -57,8 +57,7 @@ async function createTables() {
         username varchar(255) NOT NULL,
         "isVerified" BOOLEAN DEFAULT false,
         comment varchar(255) NOT NULL,
-        "postId" INTEGER NOT NULL,
-        "userId" INTEGER REFERENCES users(id)
+        "postId" INTEGER REFERENCES posts(id)
       );
        
     `);

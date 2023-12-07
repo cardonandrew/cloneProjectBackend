@@ -32,7 +32,27 @@ async function createComment({ username, isVerified, comment, postId }) {
   }
 }
 
+async function getCommentsByPostId(postId) {
+  try {
+    const {
+      rows: [comment],
+    } = await client.query(
+      `
+      SELECT comment FROM comments
+      WHERE "postId" = $1;
+      `,
+      [postId]
+    );
+
+    return comment;
+  } catch (error) {
+    console.log("Error in getPostById");
+    throw error;
+  }
+}
+
 module.exports = {
   getAllComments,
   createComment,
+  getCommentsByPostId,
 };
